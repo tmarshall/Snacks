@@ -2,7 +2,7 @@ To use an icon, see the `Icon` component in the Components section.
 
 Available Icons:
 ```jsx
-const hexValues = require('../src/components/Icon/hexValues');
+const paths = require('../src/components/Icon/paths');
 const colors = require('../src/styles/colors').default;
 const wrapperStyles = {
   display: 'flex',
@@ -25,7 +25,7 @@ const iconStyle = {
   fontSize: '26px',
   color: colors.GREEN_500
 }
-const icons = Object.keys(hexValues.default).map(name => {
+const icons = Object.keys(paths.default).map(name => {
   return (
     <li style={iconWrapStyles}>
       <Icon name={name} style={iconStyle}/>
