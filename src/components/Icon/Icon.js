@@ -1,38 +1,25 @@
 import React     from 'react'
-import Radium    from 'radium'
-import hexValues from './hexValues'
 import PropTypes from 'prop-types'
+import Radium    from 'radium'
+import paths     from './paths'
 
 const baseStyles = {
-  fontSize: '16px',
   position: 'relative',
-  fontFamily: 'ic-icons',
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  fontVariant: 'normal',
-  textTransform: 'none',
   speak: 'none',
-  lineHeight: '1',
-  fontSmoothing: 'antialiased',
-  osxFontSmoothing: 'grayscale',
-}
-
-const getIcon = ({ name, code }) => {
-  const iconCode = !code ? hexValues[name] : code
-  const codePoint = parseInt(iconCode, 16)
-  return String.fromCodePoint(codePoint)
+  lineHeight: '1'
 }
 
 const Icon = props => {
-  const { style, onClick } = props
-  const icon = getIcon(props)
+  const { style, onClick, name } = props
+  const path = paths[name]
+
   return (
     <i
       style={[baseStyles, style]}
       aria-hidden={true}
       onClick={onClick}
     >
-      {icon}
+      {path}
     </i>
   )
 }
@@ -41,9 +28,7 @@ Icon.propTypes = {
   /**
   * String name of icon - ex 'cart'
   */
-  name: PropTypes.oneOf(Object.keys(hexValues)),
-  /** Hexcode of desired icon from ic-icons */
-  code: PropTypes.string,
+  name: PropTypes.oneOf(Object.keys(paths)),
   /** Optional style overrides */
   style: PropTypes.object,
   /** Callback function called after button click
